@@ -1,8 +1,7 @@
 # ITMO_ProgrammingCPP
 ## C++ laboratories
-1. [x] 1. [Laboratory work №2](LABS/LAB2)
-2. [x] 2. [Laboratory work №3](LABS/LAB3)
-3. [ ] 3. [Soon](#)
+2. [x] 2. [Laboratory work №2](LABS/LAB2)
+3. [x] 3. [Laboratory work №3](LABS/LAB3)
 4. [ ] 4. [Soon](#)
 5. [ ] 5. [Soon](#)
 6. [ ] 6. [Soon](#)
