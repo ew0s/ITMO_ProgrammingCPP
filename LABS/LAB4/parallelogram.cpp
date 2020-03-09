@@ -3,7 +3,7 @@
 #include <iostream>
 
 Parallelogram::Parallelogram()
-    :m_top1{}, m_top2{}, m_top3{}, m_top4{}, m_mass{}, m_classname("Parallelogram") {
+        :m_top1{}, m_top2{}, m_top3{}, m_top4{}, m_mass{}, m_classname("Parallelogram") {
 }
 
 double Parallelogram::square() const {

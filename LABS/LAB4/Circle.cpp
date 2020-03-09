@@ -6,10 +6,6 @@ Circle::Circle():
     m_center{}, m_radius{}, m_mass{}, m_classname("Circle"){
 }
 
-Circle::Circle(CVector2D &center, double radius, double mass):
-    m_center(center), m_radius(radius), m_mass(mass), m_classname("Circle"){
-}
-
 double Circle::square() const {
     return m_radius * m_radius * M_PI;
 }
@@ -70,4 +66,3 @@ const char * Circle::classname() const {
 unsigned int Circle::size() const {
     return sizeof(m_center) + sizeof(m_radius) + sizeof(m_mass) + sizeof(m_classname);
 }
-

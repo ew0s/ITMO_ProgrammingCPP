@@ -15,7 +15,7 @@ public:
     bool operator== (const IPhysObject& ob ) const override ;
     bool operator< (const IPhysObject& ob ) const override ;
     void draw() const override ;
-    void initFromDialog() override ;
+    void initFromDialog() override;
     const char* classname() const override ;
     unsigned int size() const override ;
 
