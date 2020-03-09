@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/ewo/Desktop/С++/LAB4/cmake-build-debug"/>
+				<Option working_dir="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/ewo/Desktop/С++/LAB4/cmake-build-debug"/>
+				<Option working_dir="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/ewo/Desktop/С++/LAB4/cmake-build-debug"/>
+				<Option working_dir="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="LAB4">
-				<Option output="/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/LAB4" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/ewo/Desktop/С++/LAB4/cmake-build-debug"/>
+				<Option output="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/LAB4" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -51,15 +51,15 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 LAB4"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 LAB4"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="LAB4/fast">
-				<Option output="/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/LAB4" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/ewo/Desktop/С++/LAB4/cmake-build-debug"/>
+				<Option output="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/LAB4" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -71,32 +71,26 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 LAB4/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/С++/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 LAB4/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/ewo/Desktop/С++/LAB4/Circle.cpp">
+		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/Circle.cpp">
 			<Option target="LAB4"/>
 		</Unit>
-		<Unit filename="/Users/ewo/Desktop/С++/LAB4/Circle.h">
+		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/Circle.h">
 			<Option target="LAB4"/>
 		</Unit>
-		<Unit filename="/Users/ewo/Desktop/С++/LAB4/interface.h">
+		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/interface.h">
 			<Option target="LAB4"/>
 		</Unit>
-		<Unit filename="/Users/ewo/Desktop/С++/LAB4/main.cpp">
+		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/main.cpp">
 			<Option target="LAB4"/>
 		</Unit>
-		<Unit filename="/Users/ewo/Desktop/С++/LAB4/menu.cpp">
-			<Option target="LAB4"/>
-		</Unit>
-		<Unit filename="/Users/ewo/Desktop/С++/LAB4/menu.h">
-			<Option target="LAB4"/>
-		</Unit>
-		<Unit filename="/Users/ewo/Desktop/С++/LAB4/CMakeLists.txt">
+		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

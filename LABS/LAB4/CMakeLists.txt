@@ -3,4 +3,4 @@ project(LAB4)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(LAB4 main.cpp menu.cpp menu.h Circle.cpp Circle.h interface.h)
+add_executable(LAB4 main.cpp Circle.cpp Circle.h interface.h)

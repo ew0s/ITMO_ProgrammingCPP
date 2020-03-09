@@ -1,16 +1,14 @@
 #pragma once
 
 
-
 // Интерфейс "Геометрическая фигура".
 class IGeoFig {
 public:
 // Площадь.
-    virtual double square() = 0;
+    virtual double square() const = 0;
 // Периметр.
-    virtual double perimeter() = 0;
+    virtual double perimeter() const = 0;
 };
-
 
 
 // Вектор
@@ -21,14 +19,13 @@ public:
 };
 
 
-
 // Интерфейс "Физический объект".
 class IPhysObject {
 public:
 // Масса, кг.
     virtual double mass() const = 0;
 // Координаты центра масс, м.
-    virtual CVector2D position() = 0;
+    virtual CVector2D position() const = 0;
 // Сравнение по массе.
     virtual bool operator== (const IPhysObject& ob ) const = 0;
 // Сравнение по массе.
@@ -36,15 +33,13 @@ public:
 };
 
 
-
 // Интерфейс "Отображаемый"
 class IPrintable {
 public:
 // Отобразить на экране
 // (выводить в текстовом виде параметры фигуры).
-    virtual void draw() = 0;
+    virtual void draw() const = 0;
 };
-
 
 
 // Интерфейс для классов, которые можно задать через диалог с пользователем.
@@ -54,12 +49,11 @@ class IgIDialogInitial {
 };
 
 
-
 // Интерфейс "Класс"
 class BaseCObject {
 public:
 // Имя класса (типа данных).
-    virtual const char* classname() = 0;
+    virtual const char* classname() const = 0;
 // Размер занимаемой памяти.
-    virtual unsigned int size() = 0;
+    virtual unsigned int size() const = 0;
 };

@@ -12,16 +12,16 @@ public:
     Circle ();
     Circle (CVector2D&, double, double);
 
-    double square() override ;
-    double perimeter() override ;
+    double square() const override ;
+    double perimeter() const override ;
     double mass() const override ;
-    CVector2D position() override ;
+    CVector2D position() const override ;
     bool operator== (const IPhysObject& ob ) const override ;
     bool operator< (const IPhysObject& ob ) const override ;
-    void draw() override ;
+    void draw() const override ;
     void initFromDialog() override ;
-    const char* classname() override ;
-    unsigned int size() override ;
+    const char* classname() const override ;
+    unsigned int size() const override ;
 
 private:
     CVector2D m_center;
