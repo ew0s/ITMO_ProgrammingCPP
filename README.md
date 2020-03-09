@@ -1,6 +1,3 @@
-| <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fgithub.com%2Fisocpp%2Flogos&psig=AOvVaw1MMIVixP59au29l4sKw3fi&ust=1583856281232000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPim5M3ijegCFQAAAAAdAAAAABAD
-" alt="ITMO"> | 
-
 # ITMO_ProgrammingCPP
 ## [C++ laboratories](LABS)
 
