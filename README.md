@@ -1,5 +1,6 @@
 # ITMO_ProgrammingCPP
 ## [C++ laboratories](LABS)
+
 2. [x] 2. [Laboratory work №2 - Classes](LABS/LAB2)
 3. [x] 3. [Laboratory work №3 - Operators overloading](LABS/LAB3)
 4. [ ] 4. [Laboratory work №4 - Virtual functions](LABS/LAB4)
