@@ -36,18 +36,18 @@ bool Circle::operator<(const IPhysObject &ob) const {
 }
 
 void Circle::draw() const {
-    std::cout << "/---------DRAW---------/\n";
+    std::cout << "/---------DRAW_CIRCLE---------/\n";
     std::cout << "Circle:\n";
     std::cout << "Center is " << m_center.x << " by OX and " << m_center.y << " by OY\n";
     std::cout << "Radius is " << m_radius << "\n";
     std::cout << "Weight is " << mass() << "\n";
     std::cout << "Classname is " << m_classname << '\n';
     std::cout << "Size in bytes is " << size() << '\n';
-    std::cout << "/---------DRAW---------/\n\n";
+    std::cout << "/---------DRAW_CIRCLE---------/\n\n";
 }
 
 void Circle::initFromDialog() {
-    std::cout << "/---------Initialization---------/\n";
+    std::cout << "/---------Initialization_CIRCLE---------/\n";
     std::cout << "Enter Circle's center coordinates\n";
     CVector2D center;
     std::cin >> center.x >> center.y;
@@ -60,7 +60,7 @@ void Circle::initFromDialog() {
     m_mass = abs(mass);
     m_radius = abs(radius);
     m_center = center;
-    std::cout << "/---------Initialization---------/\n\n";
+    std::cout << "/---------Initialization_CIRCLE---------/\n\n";
 }
 
 const char * Circle::classname() const {

@@ -1,16 +1,12 @@
 #pragma once
 
 #include "interface.h"
+#include "Circle.h"
 
 
-class Figure: public IGeoFig, public CVector2D, public IPhysObject, public IPrintable, public IgIDialogInitial, public BaseCObject{};
-
-
-class Circle: public Figure {
+class Parallelogram: public Figure {
 public:
-
-    Circle ();
-    Circle (CVector2D&, double, double);
+    Parallelogram();
 
     double square() const override ;
     double perimeter() const override ;
@@ -24,8 +20,10 @@ public:
     unsigned int size() const override ;
 
 private:
-    CVector2D m_center;
-    double  m_radius;
+    CVector2D m_top1;
+    CVector2D m_top2;
+    CVector2D m_top3;
+    CVector2D m_top4;
     double m_mass;
     const char* m_classname;
 };

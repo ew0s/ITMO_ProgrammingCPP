@@ -90,6 +90,12 @@
 		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/main.cpp">
 			<Option target="LAB4"/>
 		</Unit>
+		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/parallelogram.cpp">
+			<Option target="LAB4"/>
+		</Unit>
+		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/parallelogram.h">
+			<Option target="LAB4"/>
+		</Unit>
 		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB4/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
