@@ -1,7 +1,10 @@
 # ITMO_ProgrammingCPP
-## [C++ laboratories](LABS)
 
 <img src= "https://github.com/ew0s/ITMO_ProgrammingCPP/blob/master/UE4DeclaringInterfaces-400x400.png">
+
+## [C++ laboratories](LABS)
+
+
 
 2. [x] 2. [Laboratory work №2 - Classes](LABS/LAB2)
 3. [x] 3. [Laboratory work №3 - Operators overloading](LABS/LAB3)
