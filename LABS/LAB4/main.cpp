@@ -15,8 +15,8 @@ unsigned int menu() {
         std::cout << "4 - Sum all figure's perimeters\n";
         std::cout << "5 - Show figure's mass' center\n";
         std::cout << "6 - Show count of memory from all classes\n";
-        /*std::cout << "7 - Sort all figures by mass\n";*/
-        std::cout << "7 - Exit from program\n";
+        std::cout << "7 - Sort all figures by mass\n";
+        std::cout << "8 - Exit from program\n";
 
         unsigned int action;
         std::cin >> action;
@@ -30,6 +30,7 @@ unsigned int menu() {
     }
 
 }
+
 
 unsigned int FigureSELECT() {
 
@@ -116,11 +117,16 @@ int main () {
                 break;
             }
 
-            /*case 7: {
-                std::sort (figures.begin(), figures.end(), figures);
+            case 7: {
+                std::sort (figures.begin(), figures.end(),
+                        [](Figure* a, Figure* b)
+                        {
+                            return (a->mass() < b->mass());
+                        });
+
                 std::cout << "All figures was successfully sorted\n";
                 break;
-            }*/
+            }
 
             default:
                 std::cout << "MY FINALE MASSAGE GOODBYE\n";
