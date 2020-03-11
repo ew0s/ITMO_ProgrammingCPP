@@ -1,4 +1,4 @@
-CMakeLists.txt.user
+CMakeLists.txt
 CMakeCache.txt
 CMakeFiles
 CMakeScripts
@@ -11,3 +11,4 @@ CTestTestfile.cmake
 _deps
 .DS_Store
 .idea
+cmake-build-debug
