@@ -21,7 +21,7 @@ unsigned int menu() {
         unsigned int action;
         std::cin >> action;
 
-        if (action < 1 || action > 7) {
+        if (action < 1 || action > 8) {
             std::cout << "Error, no such command in list!!! Try again!\n";
             continue;
         }

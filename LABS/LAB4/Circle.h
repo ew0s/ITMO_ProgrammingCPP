@@ -3,7 +3,10 @@
 #include "interface.h"
 
 
-class Figure: public IGeoFig, public CVector2D, public IPhysObject, public IPrintable, public IgIDialogInitial, public BaseCObject{
+class Figure:
+        public IGeoFig,
+        public CVector2D, public IPhysObject,
+        public IPrintable, public IgIDialogInitial, public BaseCObject{
 };
 
 
