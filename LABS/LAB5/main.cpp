@@ -8,6 +8,4 @@ int main () {
     while (true) {
         Menu.getAction();
     }
-
-    return 0;
 }

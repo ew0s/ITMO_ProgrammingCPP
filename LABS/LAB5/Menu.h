@@ -27,5 +27,4 @@ public:
 private:
     Stack <int> stack_;
     std::vector <int> array_;
-
 };

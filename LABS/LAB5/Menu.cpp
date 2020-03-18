@@ -8,19 +8,22 @@ void menu::getAction() {
     std::cout << "Array - 1\n";
     std::cout << "Stack - 2\n";
     std::cout << "EXIT FROM PROGRAM - 3\n";
+
     unsigned int type = 0;
     try {
         std::cin >> type;
         if (type <= 0 || type > 3) {
-            throw ("/----------WRONG SELECTION");
+            throw ("/----------WRONG SELECTION SELECT ACTION AGAIN----------/\n");
         }
     }
+
     catch (const char* message) {
-        std::cout << message << " SELECT ACTION AGAIN----------/\n";
+        std::cout << message;
         getAction();
     }
 
     switch (type) {
+
         case 1: {
             get_action_array();
             break;
@@ -47,15 +50,17 @@ void menu::get_action_stack() {
     try {
         std::cin >> temp;
         if (temp < 0 || temp > 3) {
-            throw ("/----------WRONG SELECTION");
+            throw ("/----------WRONG SELECTION SELECT ACTION AGAIN----------/\n");
         }
     }
+
     catch (const char* message) {
-        std::cout << message << " SELECT ACTION AGAIN----------/\n";
+        std::cout << message;
         getAction();
     }
 
     switch  (temp) {
+
         case SHOW_TOP: {
             std::cout << stack_.top() << "\n";
             getAction();
@@ -68,7 +73,7 @@ void menu::get_action_stack() {
             break;
         }
 
-        default: {
+        case PUSH_ELEMENT: {
             std::cout << "Enter numb: ";
             int numb;
             std::cin >> numb;
@@ -83,25 +88,26 @@ void menu::get_action_array() {
     std::cout << "/--------------------SELECT_ARRAY_ACTIONS--------------------/\n";
     std::cout << "ADD ELEMENT - 1\n";
     std::cout << "FIND MAX - 2\n";
+
     int temp;
     try {
         std::cin >> temp;
         if (temp < 0 || temp > 2) {
-            throw ("/----------WRONG SELECTION");
+            throw ("/----------WRONG SELECTION SELECT ACTION AGAIN----------/\n");
         }
     }
+
     catch (const char* message) {
-        std::cout << message << " SELECT ACTION AGAIN----------/\n";
+        std::cout << message;
         getAction();
     }
 
-
-    if (temp == 2) {
+    if (temp == FIND_MAX) {
         findMaximal(array_, 3);
         getAction();
     }
 
-    else {
+    else if (temp == ADD_ELEMENT){
         std::cout << "Enter numb: ";
         int value;
         std::cin >> value;

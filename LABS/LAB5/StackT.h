@@ -16,6 +16,7 @@ public:
             }
             thisStack.pop();
         }
+
         catch (Exception& exception) {
             printError(exception);
         }
@@ -29,6 +30,7 @@ public:
             }
             thisStack.push(value);
         }
+
         catch (Exception& exception) {
             printError(exception);
         }
@@ -42,12 +44,14 @@ public:
             }
             return thisStack.top();
         }
+
         catch (Exception& exception) {
             printError(exception);
         }
     }
 
 private:
+
     std::stack <T> thisStack;
     void printError(Exception& exception) {
         std::cout << "ERROR: " << exception.get_message() << "with exit code "
