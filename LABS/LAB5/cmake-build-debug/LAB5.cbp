@@ -78,6 +78,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB5/SearchMax.h">
+			<Option target="LAB5"/>
+		</Unit>
 		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB5/main.cpp">
 			<Option target="LAB5"/>
 		</Unit>

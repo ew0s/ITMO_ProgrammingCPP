@@ -1,8 +1,14 @@
-//
-// Created by Егор on 11.03.2020.
-//
+#pragma once
 
-#ifndef LAB5_SEARCHMAX_H
-#define LAB5_SEARCHMAX_H
+#include <iostream>
 
-#endif //LAB5_SEARCHMAX_H
+template <typename T>
+T findMaximal (T &arr, size_t size) {
+
+    T maximal = arr[0];
+    for (int i = 0; i < size; i++) {
+        if (arr[i] > maximal)
+            maximal = arr[i];
+    }
+    return maximal;
+}
