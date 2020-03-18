@@ -78,7 +78,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB5/SearchMax.h">
+		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB5/Exception.cpp">
+			<Option target="LAB5"/>
+		</Unit>
+		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB5/Exception.h">
+			<Option target="LAB5"/>
+		</Unit>
+		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB5/Menu.cpp">
+			<Option target="LAB5"/>
+		</Unit>
+		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB5/Menu.h">
+			<Option target="LAB5"/>
+		</Unit>
+		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB5/SearchMaxT.h">
+			<Option target="LAB5"/>
+		</Unit>
+		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB5/StackT.h">
 			<Option target="LAB5"/>
 		</Unit>
 		<Unit filename="/Users/ewo/Desktop/GITHUB/ITMO_ProgrammingCPP/LABS/LAB5/main.cpp">

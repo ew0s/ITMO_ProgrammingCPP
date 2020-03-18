@@ -1,2 +1,13 @@
 #include <iostream>
-#include "SearchMax.h"
+#include "Menu.h"
+
+
+
+int main () {
+    menu Menu;
+    while (true) {
+        Menu.getAction();
+    }
+
+    return 0;
+}
