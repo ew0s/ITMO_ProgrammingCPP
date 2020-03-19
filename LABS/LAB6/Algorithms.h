@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iterator>
-
 
 template <typename range>
 bool none_of (range, range, bool &func);

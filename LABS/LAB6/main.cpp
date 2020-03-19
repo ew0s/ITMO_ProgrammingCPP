@@ -1,14 +1,11 @@
 #include <iostream>
 #include <vector>
-#include "Algorithms.h"
 
-template <typename T>
-bool isEqual(T value) {
+bool isEqual(int value) {
     return (value > 0 && value < 3);
 }
 
-template <typename T>
-bool isSorted (T x, T y) {
+bool isSorted (int x, int y) {
     return x <= y;
 }
 
