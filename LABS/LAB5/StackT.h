@@ -8,7 +8,7 @@ template <typename T>
 class Stack {
 public:
 
-    T pop() {
+    void pop() {
 
         try {
             if (thisStack.empty()) {
@@ -22,7 +22,7 @@ public:
         }
     }
 
-    T push(T value) {
+    void push(T value) {
 
         try {
             if (thisStack.size() >= 100) {
