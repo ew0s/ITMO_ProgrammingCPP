@@ -2,7 +2,7 @@
 #include <vector>
 #include "Algorithms.h"
 
-bool isEqual(int value) {
+bool isEqual (int value) {
     return (value > 0 && value < 3);
 }
 
