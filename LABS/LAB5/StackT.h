@@ -10,52 +10,28 @@ public:
 
     void pop() {
 
-        try {
-            if (thisStack.empty()) {
-                throw Exception("the stack is empty ", 3);
-            }
-            thisStack.pop();
+        if (thisStack.empty()) {
+            throw Exception("the stack is empty ");
         }
-
-        catch (Exception& exception) {
-            printError(exception);
-        }
+        thisStack.pop();
     }
 
     void push(T value) {
 
-        try {
-            if (thisStack.size() >= 100) {
-                throw Exception("stack overflow ", 7);
-            }
-            thisStack.push(value);
+        if (thisStack.size() >= 100) {
+            throw Exception("stack overflow");
         }
-
-        catch (Exception& exception) {
-            printError(exception);
-        }
+        thisStack.push(value);
     }
 
     T top() {
 
-        try {
-            if (thisStack.empty()) {
-                throw Exception("the stack is empty ", 3);
-            }
-            return thisStack.top();
+        if (thisStack.empty()) {
+            throw Exception("the stack is empty");
         }
-
-        catch (Exception& exception) {
-            printError(exception);
-        }
+        return thisStack.top();
     }
 
 private:
-
     std::stack <T> thisStack;
-    void printError(Exception& exception) {
-        std::cout << "ERROR: " << exception.get_message() << "with exit code "
-                  << exception.get_errorCode();
-        exit(exception.get_errorCode());
-    }
 };

@@ -2,6 +2,7 @@
 
 #include "StackT.h"
 #include "SearchMaxT.h"
+#include "Exception.h"
 #include <vector>
 
 enum ArrayActions {
@@ -25,6 +26,6 @@ public:
     void get_action_array();
 
 private:
+    Array <int> array_;
     Stack <int> stack_;
-    std::vector <int> array_;
 };

@@ -1,14 +1,17 @@
 #pragma once
 
-class Exception {
-private:
-    const char* error_message_;
-    int error_numb_;
+#include <exception>
+#include <string>
 
+
+class Exception : public std::exception {
 public:
-    Exception(const char* error_message, int error_numb);
+    Exception(std::string error_message):
+        error_message_(error_message){};
 
-    const char* get_message();
-
-    int get_errorCode();
+    virtual const char * what() const noexcept override{
+        return error_message_.c_str();
+    }
+private:
+    std::string error_message_;
 };

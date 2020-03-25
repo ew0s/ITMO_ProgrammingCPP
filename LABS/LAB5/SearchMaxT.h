@@ -3,18 +3,25 @@
 #include <iostream>
 #include <vector>
 
-template <typename T>
-void findMaximal (std::vector <T> &arr, size_t size) {
 
-    T maximal = arr[0];
-    for (int i = 0; i < size; i++) {
-        if (arr[i] > maximal)
-            maximal = arr[i];
+template<typename T>
+class Array {
+public:
+
+    void findMaximal() {
+
+        T maximal = array_[0];
+        for (int i = 0; i < array_.size(); i++) {
+            if (array_[i] > maximal)
+                maximal = array_[i];
+        }
+        std::cout << maximal << "\n";
     }
-    std::cout << maximal << "\n";
-}
 
-template <typename T>
-void push(std::vector <T> &arr, T value) {
-    arr.push_back(value);
-}
+    void push(T value) {
+        array_.push_back(value);
+    }
+
+private:
+    std::vector<T> array_;
+};

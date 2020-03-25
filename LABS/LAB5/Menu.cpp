@@ -9,7 +9,7 @@ void menu::getAction() {
     std::cout << "Stack - 2\n";
     std::cout << "EXIT FROM PROGRAM - 3\n";
 
-    unsigned int type = 0;
+    unsigned int type;
     try {
         std::cin >> type;
         if (type <= 0 || type > 3) {
@@ -40,6 +40,11 @@ void menu::getAction() {
     }
 }
 
+void printError(Exception& exception) {
+    std::cout << "ERROR: " << exception.what();
+    exit(3);
+}
+
 void menu::get_action_stack() {
     std::cout << "/--------------------SELECT_STACK_ACTIONS--------------------/\n";
     std::cout << "SHOW TOP - 1\n";
@@ -62,23 +67,44 @@ void menu::get_action_stack() {
     switch  (temp) {
 
         case SHOW_TOP: {
-            std::cout << stack_.top() << "\n";
-            getAction();
-            break;
+
+            try {
+                std::cout << stack_.top() << "\n";
+                getAction();
+                break;
+            }
+
+            catch (Exception& exception) {
+                printError(exception);
+            }
         }
 
         case POP_ELEMENT: {
-            stack_.pop();
-            getAction();
-            break;
+
+            try {
+                stack_.pop();
+                getAction();
+                break;
+            }
+
+            catch (Exception& exception) {
+                printError(exception);
+            }
         }
 
         case PUSH_ELEMENT: {
-            std::cout << "Enter numb: ";
-            int numb;
-            std::cin >> numb;
-            stack_.push(numb);
-            getAction();
+
+            try {
+                std::cout << "Enter numb: ";
+                int numb = -1;
+                std::cin >> numb;
+                stack_.push(numb);
+                getAction();
+            }
+
+            catch (Exception& exception) {
+                printError(exception);
+            }
         }
     }
 }
@@ -103,15 +129,15 @@ void menu::get_action_array() {
     }
 
     if (temp == FIND_MAX) {
-        findMaximal(array_, 3);
+        array_.findMaximal();
         getAction();
     }
 
     else if (temp == ADD_ELEMENT){
         std::cout << "Enter numb: ";
-        int value;
-        std::cin >> value;
-        push(array_, value);
+        int numb;
+        std::cin >> numb;
+        array_.push(numb);
         getAction();
     }
 }
