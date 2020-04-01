@@ -1,5 +1,5 @@
 # ITMO_ProgrammingCPP
-## [C++ laboratories](LABS)
+## [C++ laboratories](https://drive.google.com/drive/folders/1pn6YN9MN8I01G1Bz-6saimffKrQ4Zyc7)
 
 2. [x] 2. [Laboratory work №2 - Classes](LABS/LAB2)
 3. [x] 3. [Laboratory work №3 - Operators overloading](LABS/LAB3)
@@ -12,6 +12,3 @@
 10. [ ] 10. [Soon](#)
 11. [ ] 11. [Soon](#)
 12. [ ] 12. [Soon](#)
-
-
-## [Labs](https://drive.google.com/drive/folders/1pn6YN9MN8I01G1Bz-6saimffKrQ4Zyc7)
