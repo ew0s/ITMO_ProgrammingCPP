@@ -14,4 +14,4 @@
 12. [ ] 12. [Soon](#)
 
 
-## [Labs](Labs - Google Диск)
+## [Labs](https://drive.google.com/drive/folders/1pn6YN9MN8I01G1Bz-6saimffKrQ4Zyc7)
