@@ -4,7 +4,7 @@
 #include <stack>
 #include "Exception.h"
 
-template <typename T>
+template <int N, typename T>
 class Stack {
 public:
 
@@ -18,7 +18,7 @@ public:
 
     void push(T value) {
 
-        if (thisStack.size() >= 100) {
+        if (thisStack.size() == N) {
             throw Exception("stack overflow");
         }
         thisStack.push(value);

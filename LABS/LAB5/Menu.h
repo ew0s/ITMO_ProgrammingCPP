@@ -27,5 +27,5 @@ public:
 
 private:
     Array <int> array_;
-    Stack <int> stack_;
+    Stack <100, int> stack_;
 };
