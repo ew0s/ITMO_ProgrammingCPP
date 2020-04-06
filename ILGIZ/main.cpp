@@ -8,6 +8,7 @@ int main() {
     someList.push(1);
     someList.push(2);
     someList.push(3);
+    someList.push(4);
 
     std::cout << someList.last() << "last element\n";
 

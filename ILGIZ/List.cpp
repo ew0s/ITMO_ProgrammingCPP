@@ -92,5 +92,4 @@ int List::get(int numb) {
     }
 
     return pointer->numb_;
-
 }
