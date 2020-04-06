@@ -2,7 +2,7 @@
 
 struct elem {
 
-    int numb_;
+    int numb_ = -1;
     elem* next_ = nullptr;
     elem* prev_ = nullptr;
 };
@@ -13,13 +13,19 @@ public:
 
     List();
 
-    void push(int numb);
+    void push(int);
 
     int last();
 
     void swap();
 
+    int get(int);
+
 private:
 
     elem list_;
+    elem* top_;
+    elem* last_;
+    unsigned int length_;
+
 };
