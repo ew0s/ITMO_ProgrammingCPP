@@ -1,29 +1,33 @@
 #pragma once
 
-#include <iostream>
-#include <cstdio>
+#include <memory>
+#include <initializer_list>
+#include "Iterator.h"
 
 
-template <typename T>
-class Circular_buffer {
-
+template <typename Value_Type>
+class Circular_Buffer
+{
 public:
 
-    Circular_buffer();
-    Circular_buffer(std::initializer_list <T>);
-    ~Circular_buffer();
+    friend class Iterator <Value_Type>;
 
-    void push_back(T);
-    void pop_back();
+    typedef Iterator <Value_Type> iterator;
 
-    void push_front(T);
-    void pop_front();
+    Circular_Buffer();
+    Circular_Buffer (std::initializer_list<Value_Type>);
+    explicit Circular_Buffer(size_t);
+
+    iterator begin();
+    iterator end();
+
 
 private:
 
-    T* data_;
-    T* begin_;
-    T* end_;
-    size_t size_;
-
+    size_t _capacity;
+    size_t _size;
+    std::unique_ptr <Value_Type[]> _data;
 };
+
+
+#include "Circular_Buffer.inl"
