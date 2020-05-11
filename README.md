@@ -9,6 +9,3 @@
 7. [ ] 7. [Laboratory work №6 - STL compatible circular buffer (the crude solution)](https://github.com/ew0s/ITMO_ProgrammingCPP/tree/master/LABS/LAB7)
 8. [ ] 8. [Soon](#)
 9. [ ] 9. [Soon](#)
-10. [ ] 10. [Soon](#)
-11. [ ] 11. [Soon](#)
-12. [ ] 12. [Soon](#)
