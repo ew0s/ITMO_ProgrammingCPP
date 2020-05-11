@@ -1,17 +1,15 @@
 #include <iostream>
+#include "Circular_Buffer.h"
 
-#include "Circular_buffer.h"
+int main()
+{
+    Circular_Buffer <int> buffer(3);
+    buffer.push_back(1);
+    buffer.push_back(2);
+    buffer.push_back(3);
+    buffer.pop_front();
+    for (auto it = buffer.begin(); it != buffer.end(); it++)
+        std::cout << *it << " ";
 
-int main() {
-
-    CCircular_Buffer<int> buffer(3);
-
-    buffer.push_front(3);
-    buffer.push_front(2);
-    buffer.push(3, 1);
-
-    for (int i = 0; i < buffer.size(); i++){
-        std::cout << buffer[i] << " ";
-    }
     return 0;
 }
