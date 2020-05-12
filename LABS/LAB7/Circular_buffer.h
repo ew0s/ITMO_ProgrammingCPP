@@ -11,6 +11,7 @@ class Circular_Buffer {
         private:
             Value_Type *ptr_;
 
+
         public:
             using difference_type = typename std::iterator<std::random_access_iterator_tag, Value_Type>::difference_type;
             iterator() : ptr_(nullptr) {}
@@ -28,6 +29,8 @@ class Circular_Buffer {
             }
             iterator operator++() {
                 ptr_++;
+                if (ptr_ == (buffer_ + capacity_))
+                    ptr_ = buffer_;
                 return *this;
             }
             iterator &operator--() {
@@ -37,6 +40,8 @@ class Circular_Buffer {
             iterator operator++(Value_Type) {
                 iterator tmp(*this);
                 ++ptr_;
+                if (ptr_ == (buffer_ + capacity_))
+                    ptr_ = buffer_;
                 return tmp;
             }
             iterator operator--(Value_Type) {
@@ -45,7 +50,7 @@ class Circular_Buffer {
                 return tmp;
             }
 
-            difference_type operator-(const iterator& itr) const { return ptr_ - itr.ptr_; }
+            difference_type operator - (const iterator& itr) const { return ptr_ - itr.ptr_; }
             iterator operator + (Value_Type idx) {return iterator(ptr_ + idx);}
             iterator operator - (Value_Type idx) {return iterator(ptr_ - idx);}
 
@@ -83,6 +88,18 @@ public:
     ~Circular_Buffer()
     {
         delete buffer_;
+    }
+
+    [[nodiscard]] size_t size() const {return size_;}
+
+    iterator begin() {return iterator(buffer_);}
+    iterator end() {return iterator(buffer_ + capacity_);}
+
+    Value_Type& front() {return *iterator(front_);}
+    Value_Type& back() {return *iterator(back_);}
+
+    Value_Type& operator [] (size_t index) {
+        return buffer_[index % capacity_];
     }
 
     void push_back(Value_Type value)
@@ -152,13 +169,15 @@ public:
             increment_front();
     }
 
-    size_t size() const {return size_;}
-
-    iterator begin() {return iterator(buffer_);}
-    iterator end() {return iterator(buffer_ + capacity_);}
-
-    const iterator front() {return iterator(front_);}
-    const iterator back() {return iterator(back_);}
+    /*void resize(size_t capacity)
+    {
+        Value_Type * temp_buffer = new Value_Type [capacity];
+        size_t i = 0;
+        for (auto it = this->begin(); it != this->end(); it++)
+        {
+            temp_buffer[i] = *it;
+        }
+    }*/
 
 private:
     Value_Type * buffer_;
