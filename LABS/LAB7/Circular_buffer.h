@@ -1,65 +1,10 @@
 #pragma once
 
 #include <initializer_list>
-#include <iterator>
 
 
 template <class Value_Type>
 class Circular_Buffer {
-
-    class iterator : public std::iterator<std::random_access_iterator_tag, Value_Type> {
-        private:
-            Value_Type *ptr_;
-
-        public:
-            using difference_type = typename std::iterator<std::random_access_iterator_tag, Value_Type>::difference_type;
-            iterator() : ptr_(nullptr) {}
-            explicit iterator(Value_Type *ptr) : ptr_(ptr) {}
-            iterator(const iterator &it) : ptr_(it.ptr_) {}
-            ~iterator() = default;
-
-            iterator &operator+=(Value_Type idx) {
-                ptr_ += idx;
-                return *this;
-            }
-            iterator &operator-=(Value_Type idx) {
-                ptr_ -= idx;
-                return *this;
-            }
-            iterator operator++() {
-                ptr_++;
-                return *this;
-            }
-            iterator &operator--() {
-                ptr_--;
-                return *this;
-            }
-            iterator operator++(Value_Type) {
-                iterator tmp(*this);
-                ++ptr_;
-                return tmp;
-            }
-            iterator operator--(Value_Type) {
-                iterator tmp(*this);
-                --ptr_;
-                return tmp;
-            }
-
-            difference_type operator - (const iterator& itr) const { return ptr_ - itr.ptr_; }
-            iterator operator + (Value_Type idx) {return iterator(ptr_ + idx);}
-            iterator operator - (Value_Type idx) {return iterator(ptr_ - idx);}
-
-            Value_Type &operator*() const { return *ptr_; }
-            Value_Type *operator->() const { return ptr_; }
-            Value_Type &operator[](const Value_Type idx) { return ptr_[idx]; }
-
-            bool operator == (const iterator & other) const {return other.ptr_ == this->ptr_;}
-            bool operator != (const iterator & other) const {return other.ptr_ != this->ptr_;}
-            bool operator < (const iterator & other) const {return other.ptr_ < this->ptr_;}
-            bool operator > (const iterator & other) const {return other.ptr_ > this->ptr_;}
-            bool operator >= (const iterator & other) const {return other.ptr_ >= this->ptr_;}
-            bool operator <= (const iterator & other) const {return other.ptr_ <= this->ptr_;}
-        };
 
 public:
 
@@ -87,8 +32,8 @@ public:
 
     [[nodiscard]] size_t size() const {return size_;}
 
-    iterator begin() const {return iterator(buffer_);}
-    iterator end() const {return iterator(buffer_ + capacity_);}
+    iterator <Value_Type> begin() const {return iterator(buffer_);}
+    iterator <Value_Type> end() const {return iterator(buffer_ + capacity_);}
 
     Value_Type& front() const {return *iterator(front_);}
     Value_Type& back() const {return *iterator(back_);}
@@ -181,12 +126,13 @@ public:
         back_ = iterator(buffer_ + size_);
     }
 
-private:
+protected:
     Value_Type * buffer_;
     size_t size_ = 0;
     size_t capacity_ = 0;
-    iterator front_;
-    iterator back_;
+private:
+    iterator <Value_Type> front_{};
+    iterator <Value_Type> back_{};
 
     void increment_back()
     {
