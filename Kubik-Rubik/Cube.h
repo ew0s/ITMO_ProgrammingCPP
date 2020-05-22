@@ -1,40 +1,80 @@
 #pragma once
 
-#include <vector>
 #include <fstream>
+#include <vector>
 #include <exception>
 #include <map>
-#include <cmath>
-#include <ctime>
-#include <cstdlib>
-#include <stack>
-#include <random>
 #include <iostream>
 
 
+using std::vector;
+
 enum color
 {
-    WHITE = '1',
-    BLUE = '2',
-    PINK = '3',
+    RED = '1',
+    ORANGE = '2',
+    YELLOW = '3',
     GREEN = '4',
-    RED = '5',
-    BLACK = '6'
+    BLUE = '5',
+    WHITE = '6'
 };
 
-using std::vector;
+typedef vector<vector<color>> side_vector;
+typedef vector<vector<vector<color>>> sides_matrix;
+typedef vector<vector<color>>*  pointer_on_side;
+
 
 class iCube
 {
 public:
     iCube ()
     {
-        sides_.resize(6, vector<vector<color>>(3, vector<color> (3)));
-        iGenerateRandom_Cube();
+        sides_.resize(6, side_vector (3, vector<color> (3)));
+        front_ = &sides_[0];
+        back_ = &sides_[1];
+        left_ = &sides_[2];
+        right_ = &sides_[3];
+        up_ = &sides_[4];
+        down_ = &sides_[5];
     }
     ~iCube() = default;
 
-    void show_cube ()
+    void write(std::ifstream&  input)
+    {
+        if (!input)
+            throw std::runtime_error("no input file");
+
+        sides_.resize(6, side_vector (3, vector<color> (3)));
+        for (int side = 0; side != 6; side++)
+            for (int row = 0; row != 3; row++)
+            {
+                std::string tmp_row;
+                input >> tmp_row;
+                sides_[side][row][0] = static_cast<color>(tmp_row[0]);
+                sides_[side][row][1] = static_cast<color>(tmp_row[1]);
+                sides_[side][row][2] = static_cast<color>(tmp_row[2]);
+            }
+        input.close();
+    }
+
+    void read(std::ofstream& output) const
+    {
+        if (!output)
+            throw std::runtime_error("no input file");
+
+        for (int side = 0; side != 6; side++)
+        {
+            for (int row = 0; row != 3; row++)
+            {
+                output << static_cast<int>(sides_[side][row][0] - '0');
+                output << static_cast<int>(sides_[side][row][1] - '0');
+                output << static_cast<int>(sides_[side][row][2] - '0');
+                output << std::endl;
+            }
+        }
+    }
+
+    void show_cube () const
     {
         std::ofstream output ("output.txt");
         for (auto side = sides_.begin(); side != sides_.end(); side++)
@@ -74,90 +114,107 @@ public:
         return true;
     }
 
-    void iGenerateRandom_Cube ()
+    void iRotate90(const color side)
     {
-        std::map <color, int> colors;
+        /*
+         * front idx = 0
+         * left idx = 1
+         * right idx = 2
+         * up idx = 3
+         * down idx = 4
+         */
 
-        for (int side = 0; side != 6; side++)
-        {
-            for (int row = 0; row != 3; row++)
-            {
-                for (int column = 0; column != 3; column++)
-                {
-                    color temp_block = generateRandomNumber_for_cube();
-                    color block = temp_block;
+        vector <pointer_on_side> sides_buffer (5, pointer_on_side(3));
+        compute_sides_buffer(side, sides_buffer);
 
-                    if (colors[block] < 9)
-                    {
-                        sides_[side][row][column] = block;
-                        colors[block]++;
-                    }
-                }
-            }
-        }
+        vector <color*> outside_circle;
+        // calculate up side's blocks in buffer
+        vector <vector<color>> temp = *sides_buffer[3];
+        for (auto it = temp[2].begin(); it != temp[2].end(); it++)
+            outside_circle.push_back(&*it);
+        
 
-        int a = 10;
-    }
-
-    void write(std::ifstream& input)
-    {
-        if (!input)
-            throw std::runtime_error("no input file");
-
-        sides_.resize(6, vector<vector<color>>(3, vector<color> (3)));
-        for (int side = 0; side != 6; side++)
-            for (int row = 0; row != 3; row++)
-            {
-                std::string tmp_row;
-                input >> tmp_row;
-                sides_[side][row][0] = static_cast<color>(tmp_row[0]);
-                sides_[side][row][1] = static_cast<color>(tmp_row[1]);
-                sides_[side][row][2] = static_cast<color>(tmp_row[2]);
-            }
-        input.close();
-    }
-
-    void read(std::ofstream& output)
-    {
-        if (!output)
-            throw std::runtime_error("no input file");
-
-        for (int side = 0; side != 6; side++)
-        {
-            for (int row = 0; row != 3; row++)
-            {
-                output << static_cast<int>(sides_[side][row][0] - '0');
-                output << static_cast<int>(sides_[side][row][1] - '0');
-                output << static_cast<int>(sides_[side][row][2] - '0');
-                output << std::endl;
-            }
-        }
+        for (auto it = outside_circle.begin(); it != outside_circle.end(); it++)
+            std::cout << static_cast<char>(**it) << ' ';
     }
 
 
 
 private:
+    sides_matrix sides_;
+    side_vector * front_;
+    side_vector * left_;
+    side_vector * back_;
+    side_vector * right_;
+    side_vector * up_;
+    side_vector * down_;
 
-    void iFillCube(std::stack <color> statements)
+    /*
+    RED = 1 = FRONT,
+    ORANGE = 2 = BACK,
+    YELLOW = 3 = LEFT,
+    GREEN = 4 = RIGHT,
+    BLUE = 5 = UP,
+    WHITE = 6 = DOWN*/
+
+    void compute_sides_buffer(const color side, vector<pointer_on_side> &buffer)
     {
-        for (int side = 0; side != 6; side++)
-            for (int row = 0; row != 3; row++)
-                for (int column = 0; column != 3; column++)
-                {
-                    color block = statements.top();
-                    statements.pop();
-                    sides_[side][row][column] = block;
-                }
+        switch (side) {
+
+            case RED: // front side in cube
+            {
+                buffer[0] = front_; //  front
+                buffer[1] = left_; //   left
+                buffer[2] = right_; //  right
+                buffer[3] = up_;  //    up
+                buffer[4] = down_; //   down
+                break;
+            }
+            case ORANGE: // back side in cube
+            {
+                buffer[0] = back_; // front
+                buffer[1] = right_; //left
+                buffer[2] = left_; // right
+                buffer[3] = up_; //   up
+                buffer[4] = down_;//  down
+                break;
+            }
+            case YELLOW: // left side in cube
+            {
+                buffer[0] = left_; // front
+                buffer[1] = back_; // left
+                buffer[2] = front_; //right
+                buffer[3] = up_; //   up
+                buffer[4] = down_; // down
+                break;
+            }
+            case GREEN: // right side in cube
+            {
+                buffer[0] = right_; // front
+                buffer[1] = front_; // left
+                buffer[2] = back_; //  right
+                buffer[3] = up_; //    up
+                buffer[4] = down_; //  down
+                break;
+            }
+            case BLUE: // up side in cube
+            {
+                buffer[0] = up_; //    front
+                buffer[1] = left_; //  left
+                buffer[2] = right_; // right
+                buffer[3] = back_; //  up
+                buffer[4] = front_; // down
+                break;
+            }
+            case WHITE: // down side in cube
+            {
+                buffer[0] = down_; //  front
+                buffer[1] = left_; //  left
+                buffer[2] = right_; // right
+                buffer[3] = front_; // up
+                buffer[4] = back_; //  down
+                break;
+            }
+        }
     }
-
-    static color generateRandomNumber_for_cube ()
-    {
-        srandom(static_cast<unsigned int>(time(nullptr)));
-        return static_cast<color>(static_cast<char>((random() % (54 - 49 + 1) + 49)));
-
-    }
-
-
-    vector <vector<vector<color>>> sides_;
-
 };
