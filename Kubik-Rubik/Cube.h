@@ -5,159 +5,255 @@
 #include <exception>
 #include <map>
 #include <iostream>
+#include "Cubes_interfaces.h"
 
 
 using std::vector;
 
-enum color
-{
-    RED = '1',
-    ORANGE = '2',
-    YELLOW = '3',
-    GREEN = '4',
-    BLUE = '5',
-    WHITE = '6'
-};
 
-typedef vector<vector<color>> side_vector;
-typedef vector<vector<vector<color>>> sides_matrix;
-typedef vector<vector<color>>*  pointer_on_side;
-
-
-class iCube
+class Cube : public Side
 {
 public:
-    iCube ()
+    Cube ()
     {
-        sides_.resize(6, side_vector (3, vector<color> (3)));
+        sides_.resize(6);
+        int i = 0;
+        for (char fill_with = '1'; fill_with <= '6'; fill_with++)
+        {
+            sides_[i].fill_with_color(static_cast<color>(fill_with));
+            i++;
+        }
+
         front_ = &sides_[0];
         back_ = &sides_[1];
         left_ = &sides_[2];
         right_ = &sides_[3];
-        up_ = &sides_[4];
-        down_ = &sides_[5];
-    }
-    ~iCube() = default;
-
-    void write(std::ifstream&  input)
-    {
-        if (!input)
-            throw std::runtime_error("no input file");
-
-        sides_.resize(6, side_vector (3, vector<color> (3)));
-        for (int side = 0; side != 6; side++)
-            for (int row = 0; row != 3; row++)
-            {
-                std::string tmp_row;
-                input >> tmp_row;
-                sides_[side][row][0] = static_cast<color>(tmp_row[0]);
-                sides_[side][row][1] = static_cast<color>(tmp_row[1]);
-                sides_[side][row][2] = static_cast<color>(tmp_row[2]);
-            }
-        input.close();
+        down_ = &sides_[4];
+        up_ = &sides_[5];
     }
 
-    void read(std::ofstream& output) const
+    Cube& operator = (const Cube& other)
     {
-        if (!output)
-            throw std::runtime_error("no input file");
+        Cube copy (other);
+        swap(*this, copy);
+        return *this;
+    }
 
-        for (int side = 0; side != 6; side++)
+    ~Cube() = default;
+
+
+    friend std::ostream & operator << (std::ostream &out, Cube & tmp_cube);
+
+    void read(std::ofstream & out)
+    {
+        for (int i = 0; i < 6; i++)
         {
-            for (int row = 0; row != 3; row++)
+            for (int j = 0; j < 3; j++)
             {
-                output << static_cast<int>(sides_[side][row][0] - '0');
-                output << static_cast<int>(sides_[side][row][1] - '0');
-                output << static_cast<int>(sides_[side][row][2] - '0');
-                output << std::endl;
-            }
-        }
-    }
-
-    void show_cube () const
-    {
-        std::ofstream output ("output.txt");
-        for (auto side = sides_.begin(); side != sides_.end(); side++)
-        {
-            for (auto row = side->begin(); row != side->end(); row++)
-            {
-                for (auto column = row->begin(); column != row->end(); column++)
+                for (int k = 0; k < 3; k++)
                 {
-                    output << static_cast<char>(*column) << ' ';
+                    out << static_cast<char>(sides_[i][j][k]);
                 }
-                output << std::endl;
+                out << std::endl;
             }
-            output << std::endl;
         }
-        output.close();
     }
 
-    bool iCorrect_Cube() // check of correct invariant of the cube
+    void write(std::ifstream & input)
     {
-        std::map <color, int> statements;
-        for (int side = 0; side < 6; side++)
+        color readable_matrix[3][3];
+        std::string line;
+        for (int i = 0; i < 6; i++)
         {
-            for (int row = 0; row < 3; row++)
+            for(int j = 0; j < 3; j++)
             {
-                statements[sides_[side][row][0]]++;
-                statements[sides_[side][row][1]]++;
-                statements[sides_[side][row][2]]++;
+                input >> line;
+                for (int k = 0; k < 3; k++)
+                {
+                    readable_matrix[j][k] = static_cast<color>(line[k]);
+                }
+            }
+            sides_[i] = readable_matrix;
+        }
+    }
+
+    //Check the correct state of the cube
+    //from the point of view of it's invariants
+    bool iCorrectCube()
+    {
+        // check that there is all 9 colors of each type in the cube
+        std::map <color, int> colors;
+
+        for (int i = 0; i < 6; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                for (int k = 0; k < 3; k++)
+                {
+                    colors[sides_[i][j][k]]++;
+                    if (colors[sides_[i][j][k]] > 9)
+                        return false;
+                }
             }
         }
 
-        for (auto & statement : statements)
+        colors.clear();
+
+        // check that all middle blocks on each side have different color
+        for (int i = 0; i < 6; i++)
         {
-            if (statement.second != 9)
+            colors[sides_[i][1][1]]++;
+            if (colors[sides_[i][1][1]] > 1)
                 return false;
+        }
+
+        // check all corner blocks on the front side
+        // according to each corner block has different color on each side
+        if (front_[0][0][0] != up_[0][2][0] && front_[0][0][0] != left_[0][0][2])
+        {
+            if (front_[0][0][2] != up_[0][2][2] && front_[0][0][2] != right_[0][0][0])
+            {
+                if (front_[0][2][0] != left_[0][2][2] && front_[0][2][0] != down_[0][0][0])
+                {
+                    if (front_[0][2][2] != down_[0][0][2] && front_[0][2][2] != right_[0][2][0])
+                    {
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+        // check all corner blocks on the back side
+        // according to each corner block has different color on each side
+        if (back_[0][0][0] != right_[0][0][2] && back_[0][0][0] != up_[0][0][2])
+        {
+            if (back_[0][0][2] != left_[0][0][0] && back_[0][0][2] != up_[0][0][0])
+            {
+                if (back_[0][2][0] != right_[0][2][2] && back_[0][2][0] != down_[0][2][2])
+                {
+                    if (back_[0][2][2] != left_[0][2][0] && back_[0][2][2] != down_[0][2][0])
+                    {
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+        // check front's side's middle - side blocks
+        if (front_[0][1][0] != left_[0][1][2])
+        {
+            if (front_[0][0][1] != up_[0][2][1])
+            {
+                if (front_[0][1][2] != right_[0][1][0])
+                {
+                    if (front_[0][2][1] != down_[0][0][1]){
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+        // check up's side's middle - side blocks
+        // knows that we've already checked middle - side blocks on the front side
+        if (up_[0][0][1] != back_[0][0][1])
+        {
+            if (up_[0][1][0] != left_[0][0][1])
+            {
+                if (up_[0][1][2] != right_[0][0][1]){
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+        // check right's side's middle - side blocks
+        // knows that we've already checked middle - side blocks on the
+        // front and up sides
+        if (right_[0][2][1] != down_[0][1][2])
+        {
+            if (right_[0][1][2] != back_[0][1][0]){
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+        // check left's side's middle - side blocks
+        // knows that we've already checked middle - side blocks on the
+        // front, up and right sides
+        if (left_[0][1][0] != back_[0][1][2])
+        {
+            if (left_[0][2][1] != down_[0][1][0]){
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+        // check back's side's middle - side blocks
+        // knows that we've already checked middle - side blocks on the
+        // front, up, right and left sides
+        if (back_[0][2][1] != down_[0][2][1]){
+        } else {
+            return false;
         }
 
         return true;
     }
 
-    void iRotate90(const color side)
-    {
-        /*
-         * front idx = 0
-         * left idx = 1
-         * right idx = 2
-         * up idx = 3
-         * down idx = 4
-         */
-
-        vector <pointer_on_side> sides_buffer (5, pointer_on_side(3));
-        compute_sides_buffer(side, sides_buffer);
-
-        vector <color*> outside_circle;
-        // calculate up side's blocks in buffer
-        vector <vector<color>> temp = *sides_buffer[3];
-        for (auto it = temp[2].begin(); it != temp[2].end(); it++)
-            outside_circle.push_back(&*it);
-        
-
-        for (auto it = outside_circle.begin(); it != outside_circle.end(); it++)
-            std::cout << static_cast<char>(**it) << ' ';
-    }
-
-
 
 private:
-    sides_matrix sides_;
-    side_vector * front_;
-    side_vector * left_;
-    side_vector * back_;
-    side_vector * right_;
-    side_vector * up_;
-    side_vector * down_;
+    vector <Side> sides_ {};
+
+    static void swap (Cube &lValue, Cube &rValue) noexcept
+    {
+        std::swap(lValue.sides_, rValue.sides_);
+    }
+
+    Side * front_;
+    Side * back_;
+    Side * left_;
+    Side * right_;
+    Side * down_;
+    Side * up_;
 
     /*
     RED = 1 = FRONT,
     ORANGE = 2 = BACK,
     YELLOW = 3 = LEFT,
     GREEN = 4 = RIGHT,
-    BLUE = 5 = UP,
-    WHITE = 6 = DOWN*/
+    BLUE = 5 = DOWN,
+    WHITE = 6 = UP
+     */
 
-    void compute_sides_buffer(const color side, vector<pointer_on_side> &buffer)
+   /* void compute_sides_buffer(const color side, vector<pointer_on_side> &buffer)
     {
         switch (side) {
 
@@ -216,5 +312,46 @@ private:
                 break;
             }
         }
-    }
+    }*/
 };
+
+
+std::ostream & operator << (std::ostream &out, Cube & tmp_cube)
+{
+    // Up side
+    for (int i = 0; i < 3; i++)
+    {
+        out << std::setw(7);
+        for (int j = 0; j < 3; j++)
+        {
+            out << static_cast<char>(tmp_cube.sides_[5][i][j]) << ' ';
+        }
+        out << std::endl;
+    }
+
+    int sides_sequence[4] = {2, 0, 3, 1};
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j : sides_sequence)
+        {
+            for (int k = 0; k < 3; k++)
+            {
+                out << static_cast<char>(tmp_cube.sides_[j][i][k]) << ' ';
+            }
+        }
+        out << std::endl;
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        out << std::setw(7);
+        for (int j = 0; j < 3; j++)
+        {
+            out << static_cast<char>(tmp_cube.sides_[4][i][j]) << ' ';
+        }
+        out << std::endl;
+    }
+
+    return out;
+}

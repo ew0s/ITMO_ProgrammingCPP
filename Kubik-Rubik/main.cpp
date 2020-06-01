@@ -1,18 +1,21 @@
 #include "Cube.h"
-#include <fstream>
+
 #include <iostream>
+#include <fstream>
 
 
 int main()
 {
     std::ifstream fin ("input.txt");
     std::ofstream fOut ("output.txt");
-    iCube some_cube;
-    some_cube.write(fin);
+    Cube some_cube1;
 
-    some_cube.iRotate90(BLUE);
+    some_cube1.write(fin);
+    some_cube1.read(fOut);
 
-    some_cube.read(fOut);
+    some_cube1.iCorrectCube() ? std::cout << "YES\n\n" : std::cout << "NO\n\n";
+
+    std::cout << some_cube1;
 
     return 0;
 }
