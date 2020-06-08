@@ -3,7 +3,7 @@
 int main() {
 
     ComplexNumb numb1;
-    ComplexNumb numb2 {3.0, 4.0};
+    ComplexNumb numb2;
 
     numb1.MultiplyByConst(2); // by constant
     numb1.print();

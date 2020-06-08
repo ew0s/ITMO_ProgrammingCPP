@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "Triangle.h"
 #include "Array.h"
+#include "Triangle.h"
 
 int main() {
 

@@ -16,6 +16,8 @@ int main()
     some_cube1.iCorrectCube() ? std::cout << "YES\n\n" : std::cout << "NO\n\n";
 
     std::cout << some_cube1;
+    some_cube1.rotate90(WHITE);
+
 
     return 0;
 }

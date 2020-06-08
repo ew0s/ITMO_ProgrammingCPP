@@ -10,8 +10,7 @@
 
 using std::vector;
 
-
-class Cube : public Side
+class Cube
 {
 public:
     Cube ()
@@ -228,6 +227,21 @@ public:
         return true;
     }
 
+    void rotate90 (const color what_side)
+    {
+        vector <Side*> tmp_buffer (6);
+        for (int i = 0; i < 6; i++)
+            tmp_buffer[i] = &sides_[i];
+        iRotate90 a (what_side, tmp_buffer);
+
+
+        std::cout << 
+
+        for (int i = 0; i < tmp_buffer.size(); i++)
+            delete tmp_buffer[i];
+        tmp_buffer.clear();
+    }
+
 
 private:
     vector <Side> sides_ {};
@@ -252,67 +266,6 @@ private:
     BLUE = 5 = DOWN,
     WHITE = 6 = UP
      */
-
-   /* void compute_sides_buffer(const color side, vector<pointer_on_side> &buffer)
-    {
-        switch (side) {
-
-            case RED: // front side in cube
-            {
-                buffer[0] = front_; //  front
-                buffer[1] = left_; //   left
-                buffer[2] = right_; //  right
-                buffer[3] = up_;  //    up
-                buffer[4] = down_; //   down
-                break;
-            }
-            case ORANGE: // back side in cube
-            {
-                buffer[0] = back_; // front
-                buffer[1] = right_; //left
-                buffer[2] = left_; // right
-                buffer[3] = up_; //   up
-                buffer[4] = down_;//  down
-                break;
-            }
-            case YELLOW: // left side in cube
-            {
-                buffer[0] = left_; // front
-                buffer[1] = back_; // left
-                buffer[2] = front_; //right
-                buffer[3] = up_; //   up
-                buffer[4] = down_; // down
-                break;
-            }
-            case GREEN: // right side in cube
-            {
-                buffer[0] = right_; // front
-                buffer[1] = front_; // left
-                buffer[2] = back_; //  right
-                buffer[3] = up_; //    up
-                buffer[4] = down_; //  down
-                break;
-            }
-            case BLUE: // up side in cube
-            {
-                buffer[0] = up_; //    front
-                buffer[1] = left_; //  left
-                buffer[2] = right_; // right
-                buffer[3] = back_; //  up
-                buffer[4] = front_; // down
-                break;
-            }
-            case WHITE: // down side in cube
-            {
-                buffer[0] = down_; //  front
-                buffer[1] = left_; //  left
-                buffer[2] = right_; // right
-                buffer[3] = front_; // up
-                buffer[4] = back_; //  down
-                break;
-            }
-        }
-    }*/
 };
 
 
@@ -329,6 +282,7 @@ std::ostream & operator << (std::ostream &out, Cube & tmp_cube)
         out << std::endl;
     }
 
+    // left, front, right, back
     int sides_sequence[4] = {2, 0, 3, 1};
 
     for (int i = 0; i < 3; i++)
@@ -343,6 +297,7 @@ std::ostream & operator << (std::ostream &out, Cube & tmp_cube)
         out << std::endl;
     }
 
+    // down
     for (int i = 0; i < 3; i++)
     {
         out << std::setw(7);
