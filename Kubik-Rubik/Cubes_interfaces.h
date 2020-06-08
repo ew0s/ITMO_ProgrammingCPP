@@ -7,6 +7,7 @@
 
 using std::vector;
 
+class Cube;
 class Sides_buffer;
 class iRotate90;
 class Side;
@@ -61,9 +62,9 @@ public:
         return *other.matrix_;
     }
 
-    const color* operator [] (unsigned int const idx)
+    color* operator [] (unsigned int const idx)
     {
-        const color* copy = matrix_[idx];
+        color* copy = matrix_[idx];
         return copy;
     }
 
@@ -107,9 +108,13 @@ protected:
 class Sides_buffer
 {
 public:
-    Sides_buffer() = default;
-    explicit Sides_buffer(const vector<Side*>& cube)
+    Sides_buffer()
     {
+        buffer_.resize(5);
+    }
+    explicit Sides_buffer(vector<Side*>& cube)
+    {
+        buffer_.resize(5);
         front_ = cube[0];
         back_ = cube[1];
         left_ = cube[2];
@@ -117,7 +122,7 @@ public:
         down_ = cube[4];
         up_ = cube[5];
     }
-    Sides_buffer(Sides_buffer const &other)
+    Sides_buffer(Sides_buffer &other)
     {
         buffer_.resize(5);
         for (int i = 0; i < 5; i++)
@@ -130,15 +135,11 @@ public:
         down_ = other.down_;
         up_ = other.up_;
     }
-    ~Sides_buffer()
-    {
-        for (auto & i : buffer_)
-        {
-            delete i;
-        }
-        buffer_.clear();
+    ~Sides_buffer() = default;
 
-        delete [] front_;
+    Sides_buffer& operator * ()
+    {
+        return *this;
     }
 
     void compute_sides_buffer(const color side)
@@ -202,29 +203,56 @@ public:
         }
     }
 
-private:
+    void print_buffer()
+    {
+        front_->print_side();
+    }
+
     vector <Side*> buffer_;
 
-    Side * front_;
-    Side * back_;
-    Side * left_;
-    Side * right_;
-    Side * down_;
-    Side * up_;
+    Side * front_{};
+    Side * back_{};
+    Side * left_{};
+    Side * right_{};
+    Side * down_{};
+    Side * up_{};
 };
 
 
 class iRotate90
 {
 public:
-
     iRotate90() = default;
-
     explicit iRotate90(const color what_side, vector<Side*>& cube)
     {
-        Sides_buffer buffer_ (cube);
+        sides_buffer = Sides_buffer (cube);
+        sides_buffer.compute_sides_buffer(what_side);
+    }
+    ~iRotate90() = default;
+
+    void left_rotate()
+    {
+        rotate_left_inside();
+        sides_buffer.print_buffer();
     }
 
-    ~iRotate90() = default;
+private:
+    Sides_buffer sides_buffer;
+
+    void rotate_left_inside() const
+    {
+        vector <color> tmp = {sides_buffer.front_[0][0][0],
+                              sides_buffer.front_[0][0][1],
+                              sides_buffer.front_[0][0][2]};
+
+        std::swap(sides_buffer.front_[0][0][2], tmp[0]);
+        std::swap(sides_buffer.front_[0][1][2], tmp[1]);
+        std::swap(sides_buffer.front_[0][2][2], tmp[2]);
+
+
+        sides_buffer.front_[0][2][0] = tmp[2];
+        std::swap(sides_buffer.front_[0][1][0], sides_buffer.front_[0][0][1]);
+
+    }
 };
 

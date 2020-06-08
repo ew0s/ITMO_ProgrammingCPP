@@ -227,23 +227,22 @@ public:
         return true;
     }
 
-    void rotate90 (const color what_side)
+    void rotate90_left (const color what_side)
     {
         vector <Side*> tmp_buffer (6);
-        for (int i = 0; i < 6; i++)
-            tmp_buffer[i] = &sides_[i];
-        iRotate90 a (what_side, tmp_buffer);
+        tmp_buffer[0] = front_;
+        tmp_buffer[1] = back_;
+        tmp_buffer[2] = left_;
+        tmp_buffer[3] = right_;
+        tmp_buffer[4] = down_;
+        tmp_buffer[5] = up_;
 
-
-        std::cout << 
-
-        for (int i = 0; i < tmp_buffer.size(); i++)
-            delete tmp_buffer[i];
-        tmp_buffer.clear();
+        iRotate90 rotate (what_side, tmp_buffer);
+        rotate.left_rotate();
     }
 
 
-private:
+protected:
     vector <Side> sides_ {};
 
     static void swap (Cube &lValue, Cube &rValue) noexcept
